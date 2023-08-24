@@ -1,6 +1,12 @@
 //309. 买卖股票的最佳时机含冷冻期
 //https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+/*dp[i][0]:以i结尾，第i天以“买入”状态获得的最大利润
+  dp[i][1]:以i结尾，第i天以“可卖”状态获得的最大利润
+  dp[i][2]:以i结尾，第i天以“卖出”状态获得的最大利润
+  dp[i][3]:以i结尾，第i天以“冷冻期”状态获得的最大利润
+  dp[i][4]:以i结尾，第i天以“可买”状态获得的最大利润
 
+  且要对dp[0][1]进行特殊处理*/
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
