@@ -2,6 +2,30 @@
 //leetcode209.长度最小的子数组
 //算法思想：把暴力解法优化后，两个双指针不用回退，即类似滑动窗口
 
+
+//第二次自己一会就做出来了，记录一下：
+class Solution {
+public:
+	int minSubArrayLen(int target, vector<int>& nums) {
+		int n = nums.size();
+		int left = 0, right = 0;
+		int sum = 0;
+		int ret = INT_MAX;
+		while (right < n)
+		{
+			sum += nums[right];//进窗口
+			while (left <= right && sum >= target)//判断
+			{
+				ret = min(ret, right - left + 1);//更新结果
+				sum -= nums[left++];//出窗口
+			}
+			right++;
+		}
+		return ret == INT_MAX ? 0 : ret;
+	}
+};
+
+//第一次做:
 class Solution {
 public:
 	int minSubArrayLen(int target, vector<int>& nums) {
